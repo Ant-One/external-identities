@@ -11,18 +11,19 @@ variable "users" {
     last_name  = string
     email      = string
   }))
+  description = "Users to create on Keycloak"
   default = [
     {
       username   = "bbobson"
       first_name = "Bob"
       last_name  = "Bobson"
-      email      = "bbobson@mycompany.com"
+      email      = "bbobson@mycompany.org"
     },
     {
       username   = "aaliceberg"
       first_name = "Alice"
       last_name  = "Aliceberg"
-      email      = "aaliceberg@mycompany.com"
+      email      = "aaliceberg@mycompany.org"
     }
   ]
 

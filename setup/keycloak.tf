@@ -1,10 +1,10 @@
-# Royaume keycloak contenant toute la configuration
+# Keycloak realm holding the configuration
 resource "keycloak_realm" "realm" {
   realm   = var.realm_name
   enabled = true
 }
 
-# Ensemble d'utilisateurs appartenant au royaume
+# Set of users belonging to the realm
 resource "keycloak_user" "user_with_initial_password" {
   for_each = { for user in var.users : user.username => user }
 
@@ -16,7 +16,7 @@ resource "keycloak_user" "user_with_initial_password" {
   last_name  = each.value.last_name
   email      = each.value.email
 
-  # On configure ici le mot de passe d'une manière très simple pour la démonstration
+  # Password setup is done in the most simple way for the purpose of this demo
   initial_password {
     value     = "password"
     temporary = false
