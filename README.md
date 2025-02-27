@@ -2,7 +2,7 @@
 
 Sandbox project configuring a local Keycloak used to demonstrate the capabilities of Azure's external identities.
 
-[!CAUTION]
+>[!CAUTION]
 > These instructions are not updated yet...
 
 
