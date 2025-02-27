@@ -17,13 +17,13 @@ variable "users" {
       username   = "bbobson"
       first_name = "Bob"
       last_name  = "Bobson"
-      email      = "bbobson@mycompany.org"
+      email      = "bbobson@ziplo.ch"
     },
     {
       username   = "aaliceberg"
       first_name = "Alice"
       last_name  = "Aliceberg"
-      email      = "aaliceberg@mycompany.org"
+      email      = "aaliceberg@ziplo.ch"
     }
   ]
 
