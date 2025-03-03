@@ -6,7 +6,7 @@ locals {
 # Client used for SAML authentication with Azure
 resource "keycloak_saml_client" "saml_client" {
   realm_id    = data.keycloak_realm.realm.id                        # Realm where the client will be provisioned.
-  client_id   = "urn:federation:MicrosoftOnline"                    # Client ID. It must be this value or it the authentication won't work.
+  client_id   = "https://login.microsoftonline.com/${var.tenant_id}/"                    # Client ID. It must be this value or it the authentication won't work.
   name        = local.saml_client_name                              # Name of the client
   description = "SAML client to federate access on an Azure tenant" # Client description
 
@@ -18,7 +18,7 @@ resource "keycloak_saml_client" "saml_client" {
 
   sign_documents            = true       # Keycloak will sign SAML documents
   sign_assertions           = true       # Keycloak will sign SAML assertions
-  signature_algorithm       = "RSA_SHA1" # Algorithm used by Keycloak to sign SAML documents
+  signature_algorithm       = "RSA_SHA256" # Algorithm used by Keycloak to sign SAML documents
   client_signature_required = false      # Keycloak will not expect documents or assignments coming from the client to be signed (Does not work with Azure). 
 
   include_authn_statement = true # Keycloak will include an AuthnStatement in the SAML response.
