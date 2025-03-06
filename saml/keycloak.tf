@@ -11,10 +11,11 @@ resource "keycloak_saml_client" "saml_client" {
   description = "SAML client to federate access on an Azure tenant" # Client description
 
   base_url            = "/auth/realms/${data.keycloak_realm.realm.id}/protocol/saml/clients/${local.saml_client_name}" # URL used whenever Keycloak needs to link to this client
+  master_saml_processing_url = [local.azure_tenant_login_url]
   valid_redirect_uris = [local.azure_tenant_login_url]                                                                 # List of URIs that the SAML client is allowed to redirect to
 
   name_id_format              = "email"                      # Format of the NameID property inside SAML documents
-  assertion_consumer_post_url = local.azure_tenant_login_url # SAML POST Binding URL for the client's assertion consumer service (login responses).
+  #assertion_consumer_post_url = local.azure_tenant_login_url # SAML POST Binding URL for the client's assertion consumer service (login responses).
 
   sign_documents            = true       # Keycloak will sign SAML documents
   sign_assertions           = true       # Keycloak will sign SAML assertions
